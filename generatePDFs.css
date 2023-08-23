@@ -1,0 +1,67 @@
+body,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+  background-color: aqua;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #555;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+p {
+  margin: 10px 0;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.para-heading {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.core_projects {
+  font-style: italic;
+}
+
+.peer_res {
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.cust_obs,
+.customer_obs,
+.insisting,
+.highest,
+.bias,
+.bias_action,
+.ownership,
+.rating,
+.diff {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.self-response {
+  margin-top: 20px;
+}
+
+.peer-response {
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 20px;
+}
