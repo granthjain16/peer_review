@@ -3,9 +3,9 @@ const puppeteer = require("puppeteer");
 const { excelData, peerResponsesData } = require("./Readexcel.js");
 
 (async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
-  const cssContent = fs.readFileSync("generatepdfs.css", "utf-8");
+  const cssContent = fs.readFileSync("./generatePDFs.css", "utf-8");
   for (const data of excelData) {
     const email = data["Email address"];
     const peerResponsesForEmail = peerResponsesData.filter(
@@ -20,69 +20,103 @@ const { excelData, peerResponsesData } = require("./Readexcel.js");
       <html>
       <head>
         <title>${email} - Responses</title>
-        
-        <link rel="stylesheet" type="text/css" href="generatepdfs.css">
-     
+        <link rel="stylesheet" type="text/css" href="./generatePDFs.css">
       </head>
+
       <body>
       <style>${cssContent}</style>
-        <h1>Self Response:</h1>
+      <h1 class="header_text">${email}</h1>
+       <h2 class="s_response"> Self Response:</h2>
         <p class="core_projects">${
           data[
             "List the core projects you have completed in the past 6 months, along with the impact they've had on customer experience and the business."
           ]
         }</p>
         
-        <h1 class="peer_res">Peer Responses:</h1>
+        <h2 class="peer_res">Peer Responses</h2>
         ${peerResponsesForEmail
           .map(
             (peerResponse, index) => `
-          <h2>Peer Response ${index + 1}:</h2>
-          <p class="cust_obs">How would you rate the team member on "Customer Obsession"?: ${
+          <div key="${index}" class="res_main">
+          <h3 class"res_main_top">Peer Response: 
+          <strong>${index + 1}</strong>
+          </h3>
+          <div class="res_body">
+          <ul>
+          <li class="cust_obs">How would you rate the team member on <strong>"Customer Obsession"</strong> ?:
+          <br>  
+          &nbsp;<strong class="s_underline">Ans </strong>:&nbsp;
+          ${
             peerResponse[
               'How would you rate the team member on "Customer Obsession"?'
             ]
-          }</p>
-          <p class="customer_obs">Highlight a few instances of why you gave the team member a particular rating in "Customer Obsession": ${
+          }</li>
+          <li class="customer_obs">Highlight a few instances of why you gave the team member a particular rating in <strong>"Customer Obsession"</strong> : 
+          <br>
+          &nbsp;<strong class="s_underline">Ans </strong>:&nbsp;
+          ${
             peerResponse[
               'Highlight a few instances of why you gave the team member a particular rating in "Customer Obsession"'
             ]
-          }</p>
-          <p class="insisting">How would you rate the team member on "Insisting on Highest Standards"? ${
+          }
+            </li>
+            <li class="insisting">How would you rate the team member on <strong>"Insisting on Highest Standards"</strong> ?
+            <br>
+            &nbsp;<strong class="s_underline">Ans </strong>:&nbsp;
+          ${
             peerResponse[
               'How would you rate the team member on "Insisting on Highest Standards"'
             ]
-          }</p>
-          <p class="highest">Highlight a few instances of why you gave the team member a particular rating on "Insisting on Highest Standards": ${
+          }</li>
+          <li class="highest">Highlight a few instances of why you gave the team member a particular rating on <strong>"Insisting on Highest Standards"</strong> :
+          <br>
+          &nbsp;<strong class="s_underline">Ans </strong>:&nbsp;
+          ${
             peerResponse[
               'Highlight a few instances of why you gave the team member a particular rating on "Insisting on Highest Standards".'
             ]
-          }</p>
-          <p class="bias">How would you rate the team member on "Bias for Action": ${
+          }</li>
+          <li class="bias">How would you rate the team member on  <strong>"Bias For Action"</strong> :
+          <br>
+          &nbsp;<strong class="s_underline">Ans </strong>:&nbsp;
+          ${
             peerResponse[
               'How would you rate the team member on their "Bias for Action"'
             ]
-          }</p>
-          <p class="bias_action">Highlight a few instances of why you gave the team member a particular rating in "Bias For Action": ${
+          }</li>
+          <li class="bias_action">Highlight a few instances of why you gave the team member a particular rating in <strong>"Bias For Action"</strong> :
+          <br>
+          &nbsp;<strong class="s_underline">Ans </strong>:&nbsp;
+          ${
             peerResponse[
               'Highlight a few instances of why you gave the team member a particular rating in "Bias For Action"'
             ]
-          }</p>
-          <p class="ownership">How would you rate the team member on "Ownership": ${
+          }</li>
+          <li class="ownership">How would you rate the team member on <strong>"Ownership"</strong> :
+          <br>
+          &nbsp;<strong class="s_underline">Ans </strong>:&nbsp;
+          ${
             peerResponse['How would you rate the team member on "Ownership"']
-          }</p>
-          <p class="rating">Highlight a few instances of why you gave the team member a particular rating on "Ownership": ${
+          }</li>
+          <li class="rating">Highlight a few instances of why you gave the team member a particular rating on <strong>"Ownership"</strong>:
+          <br>
+          &nbsp;<strong class="s_underline">Ans </strong>:&nbsp;
+          ${
             peerResponse[
               'Highlight a few instances of why you gave the team member a particular rating on "Ownership"'
             ]
-          }</p>
-          <p class="diff">What should this person do differently?: ${
-            peerResponse["What should this person do differently?"]
-          }</p>
-        `
+          }</li>
+          <li class="diff">What should this person do differently ?:
+          <br>
+          &nbsp;<strong class="s_underline">Ans </strong>:&nbsp;
+          ${peerResponse["What should this person do differently?"]}</li>
+          </ul>
+          </div>
+          </div>
+          `
           )
           .join("")}
-      </body>
+          </body>
       </html>
     `;
 

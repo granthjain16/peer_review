@@ -1,67 +1,67 @@
-body,
-h1,
-h2,
-p {
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap");
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  background-color: aqua;
+  font-family: "Cabin", sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #000;
+}
+body h2 {
+  line-height: 0.5rem;
+  font-weight: 500;
+  font-size: 1.5rem;
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: capitalize;
+}
+body h2.s_response {
+  text-decoration: underline;
+}
+body h2.peer_res {
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  text-decoration: underline;
 }
 
-h1 {
-  color: #333;
-  margin-bottom: 10px;
+.header_text {
+  text-decoration: underline;
+  text-transform: lowercase;
+  font-weight: 600;
+  font-size: 2rem;
+  font-family: "Roboto Condensed", sans-serif;
+  text-align: center;
 }
 
-h2 {
-  color: #555;
-  margin-top: 15px;
-  margin-bottom: 5px;
+p.core_projects {
+  padding: 0 1rem;
+  font-size: 1.1rem;
 }
 
-p {
-  margin: 10px 0;
-  line-height: 1.4;
-  font-size: 14px;
+.res_main {
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  border: 1px solid #000;
 }
 
-.para-heading {
-  font-weight: bold;
-  margin-top: 20px;
+.res_body ul {
+  display: grid;
+  gap: 0.5rem;
+}
+.res_body ul li {
+  padding: 0.5rem;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: normal;
+  text-transform: capitalize;
 }
 
-.core_projects {
-  font-style: italic;
-}
-
-.peer_res {
-  font-weight: bold;
-  margin-top: 30px;
-}
-
-.cust_obs,
-.customer_obs,
-.insisting,
-.highest,
-.bias,
-.bias_action,
-.ownership,
-.rating,
-.diff {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.self-response {
-  margin-top: 20px;
-}
-
-.peer-response {
-  border: 1px solid black;
-  padding: 10px;
-  margin-top: 20px;
+strong.s_underline {
+  text-decoration: underline;
 }
