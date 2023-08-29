@@ -4,7 +4,7 @@ h2,
 p {
   margin: 0;
   padding: 0;
-  background-color: aqua;
+  
 }
 
 body {
@@ -15,8 +15,17 @@ body {
 h1 {
   color: black;
   margin-bottom: 40px;
-  font-size: 3rem;
+  padding: 3rem auto;
+  margin-top: 2rem;
+  font-size: 2rem;
   font-weight: 500;
+
+}
+.self-r{
+  margin-top: 2rem !important;
+}
+.peer-r{
+  margin-top: 2rem !important;
 }
 
 h2 {
@@ -25,11 +34,21 @@ h2 {
   margin-top: 15px;
   margin-bottom: 5px;
 }
-
+.self-evaluation{
+  color: black;
+  font-size: 1.3rem;
+}
+.rating{
+  color: black;
+  font-size: 1.3rem;
+}
+.pr{
+  margin: 2rem auto !important;
+}
 p {
   margin: 10px 0;
   line-height: 1.4;
-  font-size: 14px;
+  font-size: 19spx;
 }
 
 .para-heading {
@@ -76,6 +95,7 @@ p {
   margin-bottom: 2.5rem;
 }
 .question-heading {
+  padding:1rem auto;
   font-size: 1rem;
   font-weight: 700;
 }
@@ -86,7 +106,10 @@ p {
   white-space: pre-line;
 }
 .self-response-heading{
+
   font-size: 1rem;
+  margin-top: 2.2rem;
+  padding: 1rem, auto;
 }
 .header-logo {
   position: fixed;
@@ -114,7 +137,4 @@ th, td {
   left: 0;
   right: 0;
   text-align: center;
-}
-.logo-image {
-  max-width: 100px;
 }
