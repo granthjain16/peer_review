@@ -1,0 +1,16 @@
+{
+  "name": "peer_rev",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000p\u0000e\u0000e\u0000r\u0000_\u0000r\u0000e\u0000v\u0000i\u0000e\u0000w\u0000\r\u0000 \u0000#\u0000 \u0000p\u0000e\u0000e\u0000r\u0000_\u0000r\u0000e\u0000v\u0000\r\u0000 \u0000",
+  "main": "generatePDFs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^21.1.1",
+    "xlsx": "^0.18.5"
+  }
+}

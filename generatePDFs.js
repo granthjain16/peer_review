@@ -30,7 +30,7 @@ function generateStars(rating) {
 
   for (const data of excelData) {
   
-    const email = "akarsh@growsimplee.com";
+    const email = "mayank@growsimplee.com";
     const selfData = excelData.filter((res) => res["Email address"] === email);
    console.log(selfData);
     const userData = peerResponsesData.filter(
@@ -38,7 +38,10 @@ function generateStars(rating) {
         res["E-mail Id of the team member you are filling this form for"] ===
         email
     );
-   
+
+    let name ="";
+    userData.map((res) => name = res["Name"]);
+    console.log(name);
 
     let sum1=0 , sum2 =0, sum3 =0, sum4=0;
     let sum5 =0.0; 
@@ -54,7 +57,25 @@ function generateStars(rating) {
     sum4 = (sum4/userData.length).toFixed(2);
     const averageOfSums = (parseFloat(sum1) + parseFloat(sum2) + parseFloat(sum3) + parseFloat(sum4)) / 4;
     const averageOfSumsRounded = averageOfSums.toFixed(2);
-    
+    let meaning = "";
+if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
+  meaning = "Poor";
+} else if (averageOfSumsRounded >= 2 && averageOfSumsRounded < 3) {
+  meaning = "Improvement";
+} else if (averageOfSumsRounded >= 3 && averageOfSumsRounded < 3.5) {
+  meaning = "Good";
+} else if (averageOfSumsRounded >= 3.5 && averageOfSumsRounded < 4) {
+  meaning = "Good+";
+} else if (averageOfSumsRounded >= 4 && averageOfSumsRounded < 4.5) {
+  meaning = "Great";
+} else if (averageOfSumsRounded >= 4.5 && averageOfSumsRounded < 5) {
+  meaning = "Great+";
+} else if (averageOfSumsRounded === 5) {
+  meaning = "Outstanding";
+} else {
+  meaning = "Invalid";
+}
+
     console.log(averageOfSumsRounded );
    
       const performanceMetrics = {
@@ -109,9 +130,9 @@ function generateStars(rating) {
       <h1>PERFORMANCE REVIEW LETTER</h1>
    
       <p>To,</p>
-      <p>{Name}</p>
+      <p>${name}</p>
       <p>Date : 30th Aug 2023</p>
-      <p>Overall Performance : {Great +}</p>
+      <p>Overall Performance : ${meaning}</p>
       <p class="pr">We are pleased to extend this performance letter for your commitment towards our mission to achieve Same-Day Delivery in India. You have performed with utmost {Ownership} and have raised the bar to work backwards to meet the customer needs.
       <p>
       We truly believe in challenging the status quo of the eCommerce brands. The way to do this is by building scalable technology, low-cost infrastructure & easy to use products that we’re proud to recommend to our friends & family.
