@@ -79,3 +79,42 @@ p {
   font-size: 1rem;
   font-weight: 700;
 }
+.self-responses{
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 20px;
+  white-space: pre-line;
+}
+.self-response-heading{
+  font-size: 1rem;
+}
+.header-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.blue{
+  background-color: blue;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+.footer-logo {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.logo-image {
+  max-width: 100px;
+}
