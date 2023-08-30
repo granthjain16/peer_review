@@ -10,6 +10,7 @@ function generateStars(rating) {
   return stars;
 }
 
+
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -32,6 +33,7 @@ function generateStars(rating) {
   
     const email = "mayank@growsimplee.com";
     const selfData = excelData.filter((res) => res["Email address"] === email);
+    console.log(selfData[0]);
    console.log(selfData);
     const userData = peerResponsesData.filter(
       (res) =>
@@ -40,7 +42,7 @@ function generateStars(rating) {
     );
 
     let name ="";
-    userData.map((res) => name = res["Name"]);
+    userData.map((res) => name = res["name"]);
     console.log(name);
 
     let sum1=0 , sum2 =0, sum3 =0, sum4=0;
@@ -57,6 +59,22 @@ function generateStars(rating) {
     sum4 = (sum4/userData.length).toFixed(2);
     const averageOfSums = (parseFloat(sum1) + parseFloat(sum2) + parseFloat(sum3) + parseFloat(sum4)) / 4;
     const averageOfSumsRounded = averageOfSums.toFixed(2);
+    const value1 = parseFloat(sum1);
+const value2 = parseFloat(sum2);
+const value3 = parseFloat(sum4);
+const value4 = parseFloat(sum3);
+
+const maxOfValues = Math.max(value1, value2, value3, value4);
+let varName = "";
+if (maxOfValues === value1) {
+  varName = "Customer Obsession";
+} else if (maxOfValues === value2) {
+  varName = "Bias for Action";
+} else if (maxOfValues === value3) {
+  varName = "Insisting on Highest Standards";
+} else if (maxOfValues === value4) {
+  varName = "Ownership";
+}
     let meaning = "";
 if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
   meaning = "Poor";
@@ -115,7 +133,7 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
 
 
     const selfRating = calculateAverageRatings(data);
-
+   
    
   
 
@@ -127,13 +145,14 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
         <link rel="stylesheet" type="text/css" href="generatepdfs.css">
       </head>
       <body>
-      <h1>PERFORMANCE REVIEW LETTER</h1>
-   
+      <h1 class ="prl">PERFORMANCE REVIEW LETTER</h1>
+      
+      
       <p>To,</p>
       <p>${name}</p>
       <p>Date : 30th Aug 2023</p>
       <p>Overall Performance : ${meaning}</p>
-      <p class="pr">We are pleased to extend this performance letter for your commitment towards our mission to achieve Same-Day Delivery in India. You have performed with utmost {Ownership} and have raised the bar to work backwards to meet the customer needs.
+      <p class="pr">We are pleased to extend this performance letter for your commitment towards our mission to achieve Same-Day Delivery in India. You have performed with utmost ${varName} and have raised the bar to work backwards to meet the customer needs.
       <p>
       We truly believe in challenging the status quo of the eCommerce brands. The way to do this is by building scalable technology, low-cost infrastructure & easy to use products that we’re proud to recommend to our friends & family.
       </p>
@@ -156,10 +175,19 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
       </p>
       
       </p>
-      <div class="header-logo">
-      <img src="blitz.png" alt="Header Logo" class="logo-image"/>
-      <img src="homepagelogo.png" alt="Header Logo" class="logo-image">
-    </div>
+     
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br><br>
+    <br>
+    <br>
     <h1 class="self-evaluation">SELF EVALUATION RESULTS:</h1>
         <table>
           <tr class="blue">
@@ -190,8 +218,8 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
       </tr>
          
         </table>
-    <h1 class="rating">Ratings:</h1>
-        <table>
+    <h3 class="rating">Performance Rating Index</h3>
+        <table class="bonus">
           <tr>
             <th>Rating</th>
             <th>Meaning</th>
@@ -234,18 +262,18 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
           </tr>
         </table>
         <div class="page-break">    </div>
-        <h1 class="page-break-before">Self Responses:</h1>
+        <h1 class="_blank">Self Responses:</h1>
         ${selfResponseQuestions
           .map((question) => {
             return `
               <h2 class="self-response-heading">${question}</h2>
               <p class="self-responses">${question.includes("rate")
-                  ? generateStars(data[question])
-                  :data[question]}</p>
+                  ? generateStars(selfData[0][question])
+                  :selfData[0][question]}</p>
             `;
           })
           .join("")}
-     
+        
         <h1 class="peer-r">Peer Responses:</h1>
         <style>${cssContent}</style>
        
@@ -277,12 +305,12 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
             `;
           })
           .join("")}
-          <div class="footer-logo">
-          <img src=" alt="Footer Logo" class="logo-image">
-        </div>
+          
       </body>
       </html>
     `;
+    const basePath = "blitz.png";
+    await page.setContent(htmlContent, { base: basePath });
     
     const pdfFileName = `${email}_ANmolPeerResponses.pdf`;
     await page.setContent(htmlContent);
