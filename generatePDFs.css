@@ -1,3 +1,8 @@
+@page {
+  margin-top: 160px;
+}
+
+
 body,
 h1,
 h2,
@@ -10,12 +15,15 @@ p {
 
 .prl{
   font-size: 1.6rem;
-  padding-left: 20%;
+  padding-left: 15%;
+  margin-top:-2rem;
+  font-weight: 400;
 }
 .prl2{
   padding-left: 43%;
-
+  font-size: 1.6rem;
   margin-top: -1rem;
+  font-weight: 400;
 }
 .header_img{
   padding-left: 40%;
@@ -70,9 +78,9 @@ h2 {
   margin-bottom: 5px;
 }
 .self-evaluation{
-
+   
   font-size: 1.3rem;
-  padding-top: 5.5rem;
+  margin-top: -8rem;
 }
 
 .rating{
@@ -95,6 +103,10 @@ p {
 .para-heading {
   font-weight: bold;
   margin-top: 20px;
+}
+.header-logo{
+  border: 1px solid black;
+  padding-left: 5rem;
 }
 
 .core_projects {
@@ -183,6 +195,8 @@ th, td {
 }
 
 ._blank{
-  margin-top: 4.5rem;
-  padding-top: 2rem;
+  position: relative;
+  margin-top: 10.5rem;
+  padding-top: 4.5rem;
+ 
 }
