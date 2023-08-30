@@ -155,8 +155,8 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
       <p>To,</p>
       <p>${name}</p>
       <p>Date : 30th Aug 2023</p>
-      <p>Overall Performance : ${meaning}</p>
-      <p class="pr">We are pleased to extend this performance letter for your commitment towards our mission to achieve Same-Day Delivery in India. You have performed with utmost ${varName} and have raised the bar to work backwards to meet the customer needs.
+      <p class="op">Overall Performance :<span style="color:blue"> ${meaning}</p>
+      <p class="pr">We are pleased to extend this performance letter for your commitment towards our mission to achieve Same-Day Delivery in India. You have performed with utmost<span style="font-weight:bold"> ${varName}</span> and have raised the bar to work backwards to meet the customer needs.
       <p>
       We truly believe in challenging the status quo of the eCommerce brands. The way to do this is by building scalable technology, low-cost infrastructure & easy to use products that we’re proud to recommend to our friends & family.
       </p>

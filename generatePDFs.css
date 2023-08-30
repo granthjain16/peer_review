@@ -54,6 +54,14 @@ h1 {
 .peer-r{
   margin-top: 2rem !important;
 }
+.meaning {
+  color: #0099cc !important;
+  
+}
+
+.varName {
+  font-weight: bold !important;
+}
 
 h2 {
   color: black;
