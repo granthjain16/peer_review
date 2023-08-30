@@ -31,10 +31,10 @@ function generateStars(rating) {
 
   for (const data of excelData) {
   
-    const email = "mayank@growsimplee.com";
+    const email = "akarsh@growsimplee.com";
+  
     const selfData = excelData.filter((res) => res["Email address"] === email);
-    console.log(selfData[0]);
-   console.log(selfData);
+    
     const userData = peerResponsesData.filter(
       (res) =>
         res["E-mail Id of the team member you are filling this form for"] ===
@@ -123,15 +123,15 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
     const columnsToExclude = [
       "E-mail Id of the team member you are filling this form for",
       "Timestamp",
-      "Email address"
-      
+      "Email address",
+      "name"
     ];
 
-    const selfResponseQuestions = Object.keys(data).filter(
+    const selfResponseQuestions = Object.keys(selfData[0]).filter(
       (columnName) => !columnsToExclude.includes(columnName)
     );
 
-
+  console.log(selfResponseQuestions);
     const selfRating = calculateAverageRatings(data);
    
    
@@ -145,8 +145,12 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
         <link rel="stylesheet" type="text/css" href="generatepdfs.css">
       </head>
       <body>
+      <div  class="header_img" >
+      <img src="https://raw.githubusercontent.com/growsimplee/hosted-assets/master/emailer_logo.svg" alt="blitz logo" class=""/>
+      </div>
       <h1 class ="prl">PERFORMANCE REVIEW LETTER</h1>
-      
+      <h3 class ="prl2">H1'23</h3>
+     
       
       <p>To,</p>
       <p>${name}</p>
@@ -186,8 +190,10 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
     <br>
     <br>
     <br><br>
-    <br>
-    <br>
+   
+    <div class ="header_img3">
+    <img src="https://raw.githubusercontent.com/growsimplee/hosted-assets/master/emailer_logo.svg" alt="blitz logo" class=""/>
+    </div>
     <h1 class="self-evaluation">SELF EVALUATION RESULTS:</h1>
         <table>
           <tr class="blue">
@@ -261,7 +267,10 @@ if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
             <td>20.0%</td>
           </tr>
         </table>
-        <div class="page-break">    </div>
+
+        <div class ="header_img2">
+        <img src="https://raw.githubusercontent.com/growsimplee/hosted-assets/master/emailer_logo.svg" alt="blitz logo" class=""/>
+        </div>
         <h1 class="_blank">Self Responses:</h1>
         ${selfResponseQuestions
           .map((question) => {

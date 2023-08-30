@@ -7,10 +7,33 @@ p {
   
 }
 
-.prl{
-  font-size: 2rem;
-}
 
+.prl{
+  font-size: 1.6rem;
+  padding-left: 20%;
+}
+.prl2{
+  padding-left: 43%;
+
+  margin-top: -1rem;
+}
+.header_img{
+  padding-left: 40%;
+  padding-bottom: 2rem; ;
+  border-bottom: 1px solid black ;
+}
+.header_img2{
+  padding-top: 3.5rem;
+  border-bottom: 1px solid black ;
+  padding-left: 40%;
+  padding-bottom: 1.5rem;
+}
+.header_img3{
+  padding-left: 40%;
+  border-bottom: 1px solid black;
+  margin-top: -1rem;
+  padding-bottom: 1.5rem;
+}
 body {
   font-family: Arial, sans-serif;
   padding: 60px;
@@ -41,8 +64,9 @@ h2 {
 .self-evaluation{
 
   font-size: 1.3rem;
-  padding-top: 8rem;
+  padding-top: 5.5rem;
 }
+
 .rating{
   padding-top: 6rem;
 
@@ -151,6 +175,6 @@ th, td {
 }
 
 ._blank{
-  margin-top: 7rem;
+  margin-top: 4.5rem;
   padding-top: 2rem;
 }
