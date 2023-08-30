@@ -60,7 +60,8 @@ h1 {
   margin-top: 2rem !important;
 }
 .peer-r{
-  margin-top: 2rem !important;
+  margin-top: 3rem !important;
+  margin-bottom: 0.5rem !important;
 }
 .meaning {
   color: #0099cc !important;
@@ -197,6 +198,6 @@ th, td {
 ._blank{
   position: relative;
   margin-top: 10.5rem;
-  padding-top: 4.5rem;
+  padding-top: 2.5rem;
  
 }

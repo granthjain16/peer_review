@@ -56,9 +56,11 @@ function generateStars(rating) {
     const averageOfSumsRounded = averageOfSums.toFixed(2);
     const value1 = parseFloat(sum1);
     const value2 = parseFloat(sum2);
-    const value3 = parseFloat(sum4);
-    const value4 = parseFloat(sum3);
+    const value3 = parseFloat(sum3);
+    const value4 = parseFloat(sum4);
     const maxOfValues = Math.max(value1, value2, value3, value4);
+    console.log(maxOfValues);
+    console.log(maxOfValues);
     let varName = "";
     if (maxOfValues === value1) {
       varName = "Customer Obsession";
@@ -69,6 +71,7 @@ function generateStars(rating) {
     } else if (maxOfValues === value4) {
       varName = "Ownership";
     }
+    console.log(varName);
     let meaning = "";
     if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
       meaning = "Poor";
