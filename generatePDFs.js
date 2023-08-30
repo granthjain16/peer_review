@@ -42,7 +42,7 @@ function generateStars(rating) {
     );
 
     let name ="";
-    name =userData.map((res) =>res["name"]);
+    name =selfData.map((res) =>res["name"]);
     name = name[0];
 
     let sum1=0 , sum2 =0, sum3 =0, sum4=0;
