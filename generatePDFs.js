@@ -42,8 +42,8 @@ function generateStars(rating) {
     );
 
     let name ="";
-    userData.map((res) => name = res["name"]);
-    console.log(name);
+    name =userData.map((res) =>res["name"]);
+    name = name[0];
 
     let sum1=0 , sum2 =0, sum3 =0, sum4=0;
     let sum5 =0.0; 
