@@ -73,19 +73,19 @@ function generateStars(rating) {
     }
     console.log(varName);
     let meaning = "";
-    if (averageOfSumsRounded >= 1 && averageOfSumsRounded < 2) {
+    if (averageOfSumsRounded >= 0.5 && averageOfSumsRounded < 1.5) {
       meaning = "Poor";
-    } else if (averageOfSumsRounded >= 2 && averageOfSumsRounded < 3) {
+    } else if (averageOfSumsRounded >= 1.5 && averageOfSumsRounded < 2.5) {
       meaning = "Improvement";
-    } else if (averageOfSumsRounded >= 3 && averageOfSumsRounded < 3.5) {
+    } else if (averageOfSumsRounded >= 2.5 && averageOfSumsRounded < 3.25) {
       meaning = "Good";
-    } else if (averageOfSumsRounded >= 3.5 && averageOfSumsRounded < 4) {
+    } else if (averageOfSumsRounded >= 3.25 && averageOfSumsRounded < 3.75) {
       meaning = "Good+";
-    } else if (averageOfSumsRounded >= 4 && averageOfSumsRounded < 4.5) {
+    } else if (averageOfSumsRounded >= 3.75 && averageOfSumsRounded < 4.25) {
       meaning = "Great";
-    } else if (averageOfSumsRounded >= 4.5 && averageOfSumsRounded < 5) {
+    } else if (averageOfSumsRounded >= 4.25 && averageOfSumsRounded < 4.75) {
       meaning = "Great+";
-    } else if (averageOfSumsRounded === 5) {
+    } else if(averageOfSumsRounded >= 4.75 && averageOfSumsRounded < 5) {
       meaning = "Outstanding";
     } else {
       meaning = "Invalid";
