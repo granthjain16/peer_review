@@ -1,6 +1,6 @@
 const fs = require("fs");
 const puppeteer = require("puppeteer");
-const { excelData, peerResponsesData } = require("./Readexcel.js");
+const { excelData, peerResponsesData, ratingsData } = require("./Readexcel.js");
 function generateStars(rating) {
   const numStars = parseInt(rating);
   const starIcon = "★";
@@ -11,6 +11,7 @@ function generateStars(rating) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const cssContent = fs.readFileSync("generatepdfs.css", "utf-8");
+
   const questionList = [
     'How would you rate the team member on "Customer Obsession"?',
     'Highlight a few instances of why you gave the team member a particular rating in "Customer Obsession"',
@@ -24,10 +25,13 @@ function generateStars(rating) {
   ];
   for (const data of excelData) {
     const email = "akarsh@growsimplee.com";
+    
     const selfData = excelData.filter(res => res["Email address"] === email);
     const userData = peerResponsesData.filter(
       res => res["E-mail Id of the team member you are filling this form for"] === email
     );
+    const ratingsData2 = ratingsData.filter((res) => res["Email address"] === email);
+    console.log(ratingsData2);
     let name = "";
     name = selfData.map(res => res["name"]);
     name = name[0];
@@ -59,8 +63,7 @@ function generateStars(rating) {
     const value3 = parseFloat(sum3);
     const value4 = parseFloat(sum4);
     const maxOfValues = Math.max(value1, value2, value3, value4);
-    console.log(maxOfValues);
-    console.log(maxOfValues);
+
     let varName = "";
     if (maxOfValues === value1) {
       varName = "Customer Obsession";
@@ -71,33 +74,17 @@ function generateStars(rating) {
     } else if (maxOfValues === value4) {
       varName = "Ownership";
     }
-    console.log(varName);
+  
     let meaning = "";
-    if (averageOfSumsRounded >= 0.5 && averageOfSumsRounded < 1.5) {
-      meaning = "Poor";
-    } else if (averageOfSumsRounded >= 1.5 && averageOfSumsRounded < 2.5) {
-      meaning = "Improvement";
-    } else if (averageOfSumsRounded >= 2.5 && averageOfSumsRounded < 3.25) {
-      meaning = "Good";
-    } else if (averageOfSumsRounded >= 3.25 && averageOfSumsRounded < 3.75) {
-      meaning = "Good+";
-    } else if (averageOfSumsRounded >= 3.75 && averageOfSumsRounded < 4.25) {
-      meaning = "Great";
-    } else if (averageOfSumsRounded >= 4.25 && averageOfSumsRounded < 4.75) {
-      meaning = "Great+";
-    } else if(averageOfSumsRounded >= 4.75 && averageOfSumsRounded < 5) {
-      meaning = "Outstanding";
-    } else {
-      meaning = "Invalid";
-    }
-    console.log(averageOfSumsRounded);
+    
+    meaning = ratingsData2.map(res => res["PR Conclusion"]);
     const performanceMetrics = {
-      "Customer Obsession": selfData[0]['How would you rate yourself on "Customer Obsession"?'],
-      "Bias for Action": selfData[0]['How would you rate yourself on their "Bias for Action"'],
-      Ownership: selfData[0]['How would you rate yourself on "Ownership"'],
+      "Customer Obsession": ratingsData2.map(res => res["CO"]),
+      "Bias for Action": ratingsData2.map(res => res["BA"]),
+      Ownership: ratingsData2.map(res => res["Lhs"]),
       "Insisting on Highest Standards":
-        selfData[0]['How would you rate yourself on "Insisting on Highest Standards?"'],
-      Cumulative: selfData[0]["Cumulative"],
+       ratingsData2.map(res => res["Own"]),
+      Cumulative: ratingsData2.map(res => res["SR Total"]),
     };
     function calculateAverageRatings(data) {
       const ratings = [
@@ -120,7 +107,7 @@ function generateStars(rating) {
     const selfResponseQuestions = Object.keys(selfData[0]).filter(
       columnName => !columnsToExclude.includes(columnName)
     );
-    console.log(selfResponseQuestions);
+    
     const selfRating = calculateAverageRatings(data);
     const htmlContent = `
       <!DOCTYPE html>
@@ -138,7 +125,7 @@ function generateStars(rating) {
       <p>To,</p>
       <p>${name}</p>
       <p>Date : 31st Aug 2023</p>
-      <p class="op">Overall Performance :<span style="color:blue"> ${meaning}</p>
+      <p class="op">Overall Performance :<span style="color:blue"> ${ratingsData2.map(res => res["PR Conclusion"])}</p>
       <p class="pr">We are pleased to extend this performance letter for your commitment towards our mission to achieve Same-Day Delivery in India. You have performed with utmost<span style="font-weight:bold"> ${varName}</span> and have raised the bar to work backwards to meet the customer needs.
       <p>
       We truly believe in challenging the status quo of the eCommerce brands. The way to do this is by building scalable technology, low-cost infrastructure & easy to use products that we’re proud to recommend to our friends & family.
@@ -196,11 +183,11 @@ function generateStars(rating) {
         </tr>
         <tr>
         <td>Peer Rating</td>
-        <td>${sum1}</td>
-        <td>${sum2}</td>
-        <td>${sum4}</td>
-        <td>${sum3}</td>
-        <td>${averageOfSumsRounded}</td>
+        <td>${ratingsData2.map(res => res["3.81"])}</td>
+        <td>${ratingsData2.map(res => res["3.89"])}</td>
+        <td>${ratingsData2.map(res => res["3.71"])}</td>
+        <td>${ratingsData2.map(res => res["4.08"])}</td>
+        <td>${ratingsData2.map(res => res["3.80"])}</td>
       </tr>
          
         </table>

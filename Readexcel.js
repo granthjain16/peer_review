@@ -6,5 +6,7 @@ const worksheet = workbook.Sheets[workbook.SheetNames[0]];
 const excelData = xlsx.utils.sheet_to_json(worksheet);
 const peerResponsesSheet = workbook.Sheets[workbook.SheetNames[1]];
 const peerResponsesData = xlsx.utils.sheet_to_json(peerResponsesSheet);
+const ratingsSheet =   workbook.Sheets[workbook.SheetNames[3]];
+const ratingsData = xlsx.utils.sheet_to_json(ratingsSheet);
 
-module.exports = { excelData, peerResponsesData };
+module.exports = { excelData, peerResponsesData, ratingsData };
