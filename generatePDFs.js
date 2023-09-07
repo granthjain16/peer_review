@@ -24,14 +24,14 @@ function generateStars(rating) {
     "What should this person do differently?",
   ];
   for (const data of excelData) {
-    const email = "akarsh@growsimplee.com";
+    const email = "sanjay@growsimplee.com";
     
     const selfData = excelData.filter(res => res["Email address"] === email);
     const userData = peerResponsesData.filter(
       res => res["E-mail Id of the team member you are filling this form for"] === email
     );
     const ratingsData2 = ratingsData.filter((res) => res["Email address"] === email);
-    console.log(ratingsData2);
+    
     let name = "";
     name = selfData.map(res => res["name"]);
     name = name[0];
@@ -58,13 +58,16 @@ function generateStars(rating) {
     const averageOfSums =
       (parseFloat(sum1) + parseFloat(sum2) + parseFloat(sum3) + parseFloat(sum4)) / 4;
     const averageOfSumsRounded = averageOfSums.toFixed(2);
-    const value1 = parseFloat(sum1);
-    const value2 = parseFloat(sum2);
-    const value3 = parseFloat(sum3);
-    const value4 = parseFloat(sum4);
+    
+    const value1 = Math.max(...ratingsData2.map(res => res["3.81"]));
+    const value2 = Math.max(...ratingsData2.map(res => res["3.89"]));
+    const value3 = Math.max(...ratingsData2.map(res => res["3.71"]));
+    const value4 = Math.max(...ratingsData2.map(res => res["4.08"]));
+    
     const maxOfValues = Math.max(value1, value2, value3, value4);
-
-    let varName = "";
+    console.log(maxOfValues);
+  
+    let varName ="";
     if (maxOfValues === value1) {
       varName = "Customer Obsession";
     } else if (maxOfValues === value2) {
@@ -74,7 +77,7 @@ function generateStars(rating) {
     } else if (maxOfValues === value4) {
       varName = "Ownership";
     }
-  
+  console.log(varName);
     let meaning = "";
     
     meaning = ratingsData2.map(res => res["PR Conclusion"]);
@@ -84,7 +87,7 @@ function generateStars(rating) {
       Ownership: ratingsData2.map(res => res["Lhs"]),
       "Insisting on Highest Standards":
        ratingsData2.map(res => res["Own"]),
-      Cumulative: ratingsData2.map(res => res["SR Total"]),
+      Cumulative: parseFloat(ratingsData2.map(res => res["SR Total"])).toFixed(2),
     };
     function calculateAverageRatings(data) {
       const ratings = [
@@ -104,9 +107,11 @@ function generateStars(rating) {
       "Email address",
       "name",
     ];
-    const selfResponseQuestions = Object.keys(selfData[0]).filter(
+    
+    const selfResponseQuestions = selfData[0] ? Object.keys(selfData[0]).filter(
       columnName => !columnsToExclude.includes(columnName)
-    );
+    ) : [];
+    
     
     const selfRating = calculateAverageRatings(data);
     const htmlContent = `
@@ -183,11 +188,11 @@ function generateStars(rating) {
         </tr>
         <tr>
         <td>Peer Rating</td>
-        <td>${ratingsData2.map(res => res["3.81"])}</td>
-        <td>${ratingsData2.map(res => res["3.89"])}</td>
-        <td>${ratingsData2.map(res => res["3.71"])}</td>
-        <td>${ratingsData2.map(res => res["4.08"])}</td>
-        <td>${ratingsData2.map(res => res["3.80"])}</td>
+        <td>${parseFloat(ratingsData2.map(res => res["3.81"])).toFixed(2)}</td>
+        <td>${parseFloat(ratingsData2.map(res => res["3.89"])).toFixed(2)}</td>
+        <td>${parseFloat(ratingsData2.map(res => res["3.71"])).toFixed(2)}</td>
+        <td>${parseFloat(ratingsData2.map(res => res["4.08"])).toFixed(2)}</td>
+        <td>${parseFloat(ratingsData2.map(res => res["3.80"])).toFixed(2)}</td>
       </tr>
          
         </table>
@@ -234,6 +239,7 @@ function generateStars(rating) {
             <td>20.0%</td>
           </tr>
         </table>
+        
         <h1 class="_blank">Self Responses:</h1>
         ${selfResponseQuestions
           .map(question => {
